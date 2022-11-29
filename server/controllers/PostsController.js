@@ -8,6 +8,7 @@ export class PostsController extends BaseController{
     this.router
       .get('', this.getPosts)
       .get('/:postId', this.getPostById)
+      // .use Auth
       .post('', this.createPost)
       .put('/:postId', this.editPost)
       .delete('/:postId', this.deletePost)
@@ -31,9 +32,32 @@ export class PostsController extends BaseController{
     }
   }
 
-  async createPost(req, res, next){}
+  async createPost(req, res, next){
+    try {
+      let postData = req.body
+      let post = await postsService.createPost(postData)
+      res.send(post)
+    } catch (error) {
+      next(error)
+    }
+  }
 
-  async editPost(req, res, next){}
+  async editPost(req, res, next){
+    try {
+      let postData = req.body
+      let post = await postsService.editPost(req.params.postId, postData)
+      res.send(post)
+    } catch (error) {
+      next(error)
+    }
+  }
 
-  async deletePost(req, res, next){}
+  async deletePost(req, res, next){
+    try {
+      let post = await postsService.deletePost(req.params.postId)
+      res.send(post)
+    } catch (error) {
+      next(error)
+    }
+  }
 }
