@@ -1,3 +1,4 @@
+import { Auth0Provider } from "@bcwdev/auth0provider";
 import { postsService } from "../services/PostsService.js";
 import BaseController from "../utils/BaseController.js";
 
@@ -8,7 +9,7 @@ export class PostsController extends BaseController{
     this.router
       .get('', this.getPosts)
       .get('/:postId', this.getPostById)
-      // .use Auth
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createPost)
       .put('/:postId', this.editPost)
       .delete('/:postId', this.deletePost)
@@ -35,6 +36,7 @@ export class PostsController extends BaseController{
   async createPost(req, res, next){
     try {
       let postData = req.body
+      postData.creatorId = req.userInfo.id 
       let post = await postsService.createPost(postData)
       res.send(post)
     } catch (error) {
