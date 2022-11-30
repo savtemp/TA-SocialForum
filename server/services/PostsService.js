@@ -30,7 +30,7 @@ class PostsService{
     await post.save()
     return post
   }
-  
+
   async deletePost(postId) {
     let post = await this.getPostById(postId)
     await post.remove()
