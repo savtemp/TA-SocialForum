@@ -7,12 +7,8 @@ import { ValueSchema } from '../models/Value'
 class DbContext {
   Values = mongoose.model('Value', ValueSchema);
   Account = mongoose.model('Account', AccountSchema);
-
   Posts = mongoose.model('Post', PostSchema)
-
   Comments = mongoose.model('Comment', CommentSchema)
-
-  // Like = 
 }
 
 export const dbContext = new DbContext()

@@ -13,6 +13,7 @@ export class PostsController extends BaseController{
       .get('/:postId/comments', this.getPostComments)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createPost)
+      .put('/:postId/like', this.likePost)
       .put('/:postId', this.editPost)
       .delete('/:postId', this.deletePost)
   }
@@ -69,6 +70,18 @@ export class PostsController extends BaseController{
   async deletePost(req, res, next){
     try {
       let post = await postsService.deletePost(req.params.postId)
+      res.send(post)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async likePost(req, res, next){
+    try {
+      let likeData = req.body
+      // adding the creator info to the like data
+      likeData.creatorId = req.userInfo.id
+      let post = await postsService.likePost(req.params.postId, likeData)
       res.send(post)
     } catch (error) {
       next(error)

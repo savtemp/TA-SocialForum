@@ -36,6 +36,22 @@ class PostsService{
     await post.remove()
     return post
   }
+
+  async likePost(postId, likeData){
+    // find the post
+    let post = await this.getPostById(postId)
+    // once you have found the post, go through the post array and find the post where the creatorId matches the likeData creator id)
+    let foundPost = post.likes.find(p => p.creatorId == likeData.creatorId)
+    // if the post is found attack the like data value to the found post
+    if(foundPost){
+      foundPost.value = likeData.value
+    } else {
+      post.likes.push(likeData)
+    }
+    // NOTE saves the data to the DB, using this allows new data OR updated data to be added to the DB
+    await post.save()
+    return post
+  }
 }
 
 

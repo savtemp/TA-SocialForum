@@ -28,6 +28,7 @@ export class CommentsController extends BaseController{
       let commentData = req.body
       commentData.creatorId = req.userInfo.id
       let comment = await commentsService.createComment(commentData)
+      res.send(comment)
     } catch (error) {
       next(error)
     }

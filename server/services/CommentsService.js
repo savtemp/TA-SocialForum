@@ -5,6 +5,7 @@ import { dbContext } from "../db/DbContext.js"
 class CommentsService{
     async getPostComments(postId){
     let comment = await dbContext.Comments.find({postId}).populate('creator')
+    // populating the virtual (a populated virtual contains documents from another collection) 
     return comment
   }
     async getCommentById(commentId) {
