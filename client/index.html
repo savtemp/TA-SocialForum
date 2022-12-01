@@ -11,16 +11,35 @@
     integrity="sha512-fXnjLwoVZ01NUqS/7G5kAnhXNXat6v7e3M9PhoMHOTARUMCaf5qNO84r5x9AFf5HDzm3rEZD8sb/n6dZ19SzFA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="assets/style/main.css">
+  <link rel="stylesheet" href="assets/style/style.css">
   <title>TA-SocialForum</title>
 </head>
 
-<body>
+<style>
+  body.debug .container,
+  body.debug .container-fluid {
+    outline: 2px double blue;
+    outline-offset: -2px;
+  }
+
+  body.debug .row {
+    outline: 2px dashed red;
+    outline-offset: -2px;
+  }
+
+  body.debug [class*="col-"] {
+    outline: 2px dotted forestgreen;
+    outline-offset: -3px;
+  }
+</style>
+
+<body class="">
   <header>
     <nav class="navbar navbar-dark navbar-expand bg-dark text-light">
       <a class="navbar-brand" href="#">
         <!-- <img src="https://codeworks.blob.core.windows.net/public/assets/img/cw-mark.png" height="45" alt=""
           loading="lazy"> -->
-        <span class="ml-2">TA-SocialForum</span>
+        <p class="mx-2">Catted</p>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,18 +56,115 @@
 
 
   <main class="container-fluid">
-      <div class="row">
-        <div class="col-10">Henlo</div>
+    <!-- SECTION CREATE A POST -->
+      <div class="row justify-content-center my-3">
+        <div class="col-10 bg-white elevation-3">
+          <p class="fs-3">What Cat Are You Today?</p>
+          <!-- STUB Row for selecting a cat image from API -->
+          <div class="row px-3">
+            <button class="col-3 btn btn-success text-center">GET A RANDOM CAT</button>
+            <div class="col-5 d-flex">
+                <input class="form-control" type="text" placeholder="Search for a cat">
+                <button class="btn btn-info"><i class="mdi mdi-magnify"></i></button>
+            </div>
+          </div>
+
+          <!-- STUB Row for post form - CREATE A POST -->
+          <div class="row justify-content-center my-3">
+            <form class="col-10" action="">
+              <div class="row justify-content-center align-items-center">
+                <div class="col-6">
+                  <input class="form-control my-1" type="text" placeholder="POST TITLE">
+                  <!-- FIXME prevent text area from being able to be dragged longer -->
+                  <textarea class="form-control my-1" name="" id="" cols="30" rows="10" placeholder="POST BODY"></textarea>
+                </div>
+                <div class="col-4">
+                  <label for="">Selected Cat Image</label>
+                  <img class="img-fluid cat-img" src="https://thiscatdoesnotexist.com/" alt="">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION SEE ALL POSTS -->
+      <div class="masonry">
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/300">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/100">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/50">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/600">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/200">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/500">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/400">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/30">
+        </div>
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/10">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/20">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/60">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/80">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/300">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/200">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/100">
+        </div>
+
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/50">
+        </div>
+        <div class="mItem">
+          <img class="img-fluid" src="https://source.unsplash.com/random/600">
+        </div>
       </div>
   </main>
 
 
   <footer class="container-fluid bg-dark text-light">
-    <!-- <div class="row text-center">
+    <div class="row text-center">
       <div class="col">
-        <p><small>Made with 💖 by CodeWorks</small></p>
+        <p><small>Made with 💖 by Cats</small></p>
       </div>
-    </div> -->
+    </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

@@ -17,8 +17,8 @@ class AppState extends EventEmitter {
 
   // activePost = {}
 
-  // /** @type {import('./Models/Post.js').Post[]} */
-  // comments = []
+  /** @type {import('./Models/Comment.js').Comment[]} */
+  comments = []
 
   // activeComment = {}
 
