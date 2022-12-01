@@ -32,6 +32,18 @@ class CommentsService{
     await comment.remove()
     return comment
   }
+
+  async likeComment(commentId, likeData){
+    let comment = await this.getCommentById(commentId)
+    let foundComment = comment.likes.find(c => c.creatorId == likeData.creatorId)
+    if(foundComment){
+      foundComment.value = likeData.value
+    } else {
+      comment.likes.push(likeData)
+    }
+    await comment.save()
+    return comment
+  }
 }
 
 

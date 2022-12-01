@@ -11,6 +11,7 @@ export class CommentsController extends BaseController{
       .get('/:commentId', this.getCommentById)
       .post('', this.createComment)
       .put('/:commentId', this.editComment)
+      .put('/:commentId/like', this.likeComment)
       .delete('/:commentId', this.deleteComment)
   }
 
@@ -47,6 +48,17 @@ export class CommentsController extends BaseController{
   async deleteComment(req, res, next){
     try {
       let comment = await commentsService.deleteComment(req.params.commentId)
+      res.send(comment)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async likeComment(req, res, next){
+    try {
+      let likeData = req.body
+      likeData.creatorId = req.userInfo.id
+      let comment = await commentsService.likeComment(req.params.commentId, likeData)
       res.send(comment)
     } catch (error) {
       next(error)
