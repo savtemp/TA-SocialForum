@@ -10,6 +10,20 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Value').Value[]} */
   values = []
   socketData = []
+
+
+  /** @type {import('./Models/Post.js').Post[]} */
+  posts = []
+
+  // activePost = {}
+
+  // /** @type {import('./Models/Post.js').Post[]} */
+  // comments = []
+
+  // activeComment = {}
+
+  // /** @type {import('./Models/Post.js').Post[]} */
+  // likes = []
 }
 
 export const appState = new Proxy(new AppState(), {
